@@ -1,12 +1,6 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Link,
-  Route,
-  Routes,
-  Outlet,
-} from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, Outlet } from 'react-router-dom';
 
 import './style.css';
 
@@ -76,20 +70,14 @@ const Flight = () => {
 };
 
 const City = () => {
-  return <></>;
+  return <>City</>;
 };
 const Island = () => {
-  return <></>;
+  return <>Island</>;
 };
 
 const App = () => (
   <>
-    <Routes>
-      <Route path="/" element={<Flight />}>
-        <Route path="city" element={<City />} />
-        <Route path="island" element={<Island />} />
-      </Route>
-    </Routes>
     <div class="header">
       <h1>Chania</h1>
     </div>
@@ -97,26 +85,27 @@ const App = () => (
     <div class="row">
       <div class="col-3 col-s-3 menu">
         <ul>
-          <li>The Flight</li>
-          <li>The City</li>
-          <li>The Island</li>
-          <li>The Food</li>
+          <li>
+            <Link to="/flight">The Flight</Link>
+          </li>
+          <li>
+            <Link to="/city">City</Link>
+          </li>
+          <li>
+            <Link to="/island">Island</Link>
+          </li>
         </ul>
       </div>
 
       <div class="col-6 col-s-9">
-        <Outlet />
+        <Routes>
+          <Route path="/flight" element={<Flight />} />
+          <Route path="/city" element={<City />} />
+          <Route path="/island" element={<Island />} />
+        </Routes>
       </div>
 
       <div class="col-3 col-s-12">
-        <div class="aside">
-          <h2>What?</h2>
-          <p>Chania is a city on the island of Crete.</p>
-          <h2>Where?</h2>
-          <p>Crete is a Greek island in the Mediterranean Sea.</p>
-          <h2>How?</h2>
-          <p>You can reach Chania airport from all over Europe.</p>
-        </div>
       </div>
     </div>
 
@@ -130,8 +119,8 @@ const App = () => (
 );
 
 ReactDOM.render(
-  <Router>
+  <BrowserRouter>
     <App />
-  </Router>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
