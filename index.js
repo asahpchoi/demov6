@@ -11,11 +11,7 @@ const App = () => {
 };
 
 const Header = () => {
-  return (
-    <div>
-      <Button variant="contained">Hello World</Button>
-    </div>
-  );
+  return <Button variant="contained">Hello World</Button>;
 };
 
 const container = document.getElementById('app');
